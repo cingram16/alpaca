@@ -1,0 +1,51 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: alpaca
+frameworkVersion: '2'
+
+custom:
+  secrets: ${ssm:/aws/reference/secretsmanager/${opt:stage, self:provider.stage, 'dev'}/alpaca~true}
+  fromTerraform: ${file(../scripts/terraform-outputs-as-variables.js)}
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: us-east-1
+  profile: alpaca
+  timeout: 30
+  environment:
+    keyId: ${self:custom.secrets.keyId}
+    secretKey: ${self:custom.secrets.secretKey}
+    paper: ${self:custom.secrets.paper}
+    usePolygon: ${self:custom.secrets.usePolygon}
+  vpc: 
+    securityGroupIds:
+      - ${self:custom.fromTerraform.security_group_id}
+    subnetIds: 
+      - ${self:custom.fromTerraform.private_subnets}
+
+functions:
+  buy:
+    handler: handler.buy
+    events:
+      - schedule: 
+          rate: rate(1 minute)
+      
+  sell-limit:
+    handler: handler.sell_limit
+    events:
+      - schedule: 
+          rate: rate(1 minute)
