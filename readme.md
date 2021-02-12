@@ -53,12 +53,12 @@ This will deploy using the ./scripts/deploy.sh
         echo "Completed terraform apply"
 
         echo "Running npm init"
-        (cd .../serverless  && npm init)
+        (cd ../serverless  && npm init)
         wait
         echo "Completed npm init"
         
         echo "Running npm install"
-        (cd .../serverless  && npm install)
+        (cd ../serverless  && npm install)
         wait
         echo "Completed npm install"
 
@@ -66,7 +66,7 @@ This will deploy using the ./scripts/deploy.sh
         (cd ../serverless && sls deploy)
         wait
         echo "Completed sls deploy"
-        
+
         echo "Done"
 
 * Will want to pass in the environment/stage as a param for the script at some point
