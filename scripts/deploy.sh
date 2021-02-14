@@ -6,7 +6,7 @@ wait
 echo "Completed terraform init"
 
 echo "Running terraform apply"
-(cd ../terraform/env/dev && terraform apply)
+(cd ../terraform/env/dev && terraform apply -auto-approve)
 wait
 echo "Completed terraform apply"
 
