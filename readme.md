@@ -51,11 +51,6 @@ This will deploy using the ./scripts/deploy.sh
         (cd ../terraform/env/dev && terraform apply)
         wait
         echo "Completed terraform apply"
-
-        echo "Running npm init"
-        (cd ../serverless  && npm init)
-        wait
-        echo "Completed npm init"
         
         echo "Running npm install"
         (cd ../serverless  && npm install)
