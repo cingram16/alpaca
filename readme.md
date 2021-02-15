@@ -36,8 +36,6 @@ Run the following command inside the project directory:
 
         $ cd serverless && npm run deploy
 
-You will be asked to continue with the terraform apply, enter 'yes'.
-
 This will deploy using the ./scripts/deploy.sh
 
 * Will want to pass in the environment/stage as a param for the script at some point
@@ -46,8 +44,6 @@ This will deploy using the ./scripts/deploy.sh
 Run the following command to teardown everything, you should do this when not developing to reduce costs of the NAT gateway ($0.04 / hour = $35 / month if you leave it up).
 
         $ cd serverless && npm run destroy
-
-You will be asked to continue with the terraform destroy, enter 'yes'.
 
 This will destroy using the ./scripts/destroy.sh
 
