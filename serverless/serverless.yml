@@ -41,5 +41,4 @@ functions:
   buy:
     handler: handler.buy
     events:
-      - schedule: 
-          rate: rate(15 minutes)
+      - schedule: cron(35 14 ? * MON-FRI *) # run 5 minutes after market opens (UTC)
