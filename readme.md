@@ -1,5 +1,7 @@
 # Alpaca Stock Trading Serverless App
 
+!! Run at your own risk! This project uses basic moving averages, it is highly recommended to write your own algorithms and test heavily before ever using real assets. 
+
 ## Prerequisites
 * Terraform installed
 * Serverless Framework installed
